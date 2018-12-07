@@ -69,16 +69,20 @@
             <organizationUrl>http://www.microsoft.com/</organizationUrl>
         </developer>
     </developers>
+
+    <!-- Setup deployment -->
     <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-  </distributionManagement>
+        <repository>
+            <id>buildingblocks.release.repo</id>
+            <name>Building Blocks Repository</name>
+            <url>https://repo.building-blocks.nl/artifactory/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>buildingblocks.snapshot.repo</id>
+            <name>Building Blocks Snapshot Repository</name>
+            <url>https://repo.building-blocks.nl/artifactory/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
     <build>
         <plugins>
             <plugin>
@@ -149,17 +153,6 @@
               </goals>
             </execution>
           </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.sonatype.plugins</groupId>
-          <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.8</version>
-          <extensions>true</extensions>
-          <configuration>
-            <serverId>ossrh</serverId>
-            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-            <autoReleaseAfterClose>false</autoReleaseAfterClose>
-          </configuration>
         </plugin>
             <plugin>
                 <groupId>org.scalastyle</groupId>
